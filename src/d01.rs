@@ -89,7 +89,10 @@ where
 
 #[cfg(test)]
 mod tests {
-    fn test_input() -> std::str::Lines<'static> {
+    use std::io;
+    use std::iter::Map;
+
+    fn test_input() -> impl Iterator<Item = Result<String, io::Error>> {
         "199
 200
 208
@@ -101,33 +104,26 @@ mod tests {
 260
 263"
         .lines()
+        .map(|l| Ok(String::from(l)))
     }
 
     mod p1 {
         use super::super::p1;
         use super::test_input;
-        use std::io;
 
         #[test]
         fn it_works() {
-            assert_eq!(
-                p1::<_, io::Error>(test_input().map(|l| Ok(String::from(l)))),
-                7
-            );
+            assert_eq!(p1(test_input()), 7);
         }
     }
 
     mod p2 {
         use super::super::p2;
         use super::test_input;
-        use std::io;
 
         #[test]
         fn it_works() {
-            assert_eq!(
-                p2::<_, io::Error>(test_input().map(|l| Ok(String::from(l)))),
-                5
-            );
+            assert_eq!(p2(test_input()), 5);
         }
     }
 }
