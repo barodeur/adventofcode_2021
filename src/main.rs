@@ -12,7 +12,8 @@ fn main() {
     let mut res = None;
 
     match args.get(1).map(String::as_str).unwrap() {
-        "d01p1" => res = Some(d01::count_increases(lines)),
+        "d01p1" => res = Some(d01::p1(lines)),
+        "d01p2" => res = Some(d01::p2(lines)),
         _ => {}
     }
     println!("{}", res.unwrap());
