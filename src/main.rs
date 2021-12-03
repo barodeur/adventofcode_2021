@@ -9,7 +9,7 @@ mod d02;
 fn main() {
     let args: Vec<String> = env::args().collect();
     let stdin = io::stdin();
-    let lines = stdin.lock().lines();
+    let lines = stdin.lock().lines().filter_map(Result::ok);
     let mut res = None;
 
     match args.get(1).map(String::as_str).unwrap() {

@@ -17,18 +17,16 @@ where
     count
 }
 
-fn parse_input<I, E>(iter: I) -> impl Iterator<Item = usize>
+fn parse_input<I>(iter: I) -> impl Iterator<Item = usize>
 where
-    E: Debug,
-    I: Iterator<Item = Result<String, E>>,
+    I: Iterator<Item = String>,
 {
-    iter.map(|line| line.unwrap().parse::<usize>().unwrap())
+    iter.map(|line| line.parse::<usize>().unwrap())
 }
 
-pub fn p1<I, E>(iter: I) -> usize
+pub fn p1<I>(iter: I) -> usize
 where
-    E: Debug,
-    I: Iterator<Item = Result<String, E>>,
+    I: Iterator<Item = String>,
 {
     count_increases(parse_input(iter))
 }
@@ -79,20 +77,16 @@ where
     }
 }
 
-pub fn p2<I, E>(iter: I) -> usize
+pub fn p2<I>(iter: I) -> usize
 where
-    E: Debug,
-    I: Iterator<Item = Result<String, E>>,
+    I: Iterator<Item = String>,
 {
     count_increases(Windows::new(parse_input(iter)).map(|(a, b, c)| a + b + c))
 }
 
 #[cfg(test)]
 mod tests {
-    use std::io;
-    use std::iter::Map;
-
-    fn test_input() -> impl Iterator<Item = Result<String, io::Error>> {
+    fn test_input() -> impl Iterator<Item = String> {
         "199
 200
 208
@@ -104,7 +98,7 @@ mod tests {
 260
 263"
         .lines()
-        .map(|l| Ok(String::from(l)))
+        .map(String::from)
     }
 
     mod p1 {

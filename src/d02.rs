@@ -1,19 +1,15 @@
-use std::fmt::Debug;
-
 enum Command {
     Forward(usize),
     Down(usize),
     Up(usize),
 }
 
-fn parse_input<I, E>(iter: I) -> impl Iterator<Item = Command>
+fn parse_input<I>(iter: I) -> impl Iterator<Item = Command>
 where
-    E: Debug,
-    I: Iterator<Item = Result<String, E>>,
+    I: Iterator<Item = String>,
 {
     iter.filter_map(|line| {
-        let l = line.unwrap();
-        let parts = l.split_whitespace().collect::<Vec<_>>();
+        let parts = line.split_whitespace().collect::<Vec<_>>();
         match (
             parts.get(0),
             parts.get(1).and_then(|v| v.parse::<usize>().ok()),
@@ -26,10 +22,9 @@ where
     })
 }
 
-pub fn p1<I, E>(iter: I) -> usize
+pub fn p1<I>(iter: I) -> usize
 where
-    E: Debug,
-    I: Iterator<Item = Result<String, E>>,
+    I: Iterator<Item = String>,
 {
     let mut hpos = 0;
     let mut depth = 0;
@@ -43,10 +38,9 @@ where
     hpos as usize * depth as usize
 }
 
-pub fn p2<I, E>(iter: I) -> usize
+pub fn p2<I>(iter: I) -> usize
 where
-    E: Debug,
-    I: Iterator<Item = Result<String, E>>,
+    I: Iterator<Item = String>,
 {
     let mut aim = 0;
     let mut hpos = 0;
@@ -67,9 +61,8 @@ where
 #[cfg(test)]
 mod tests {
     use super::{p1, p2};
-    use std::io;
 
-    fn test_input() -> impl Iterator<Item = Result<String, io::Error>> {
+    fn test_input() -> impl Iterator<Item = String> {
         "forward 5
 down 5
 forward 8
@@ -77,7 +70,7 @@ up 3
 down 8
 forward 2"
             .lines()
-            .map(|l| Ok(String::from(l)))
+            .map(String::from)
     }
 
     mod p1 {
