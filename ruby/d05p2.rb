@@ -12,11 +12,8 @@ def diagonal_points(((x1, y1), (x2,y2)))
 end
 
 if __FILE__ == $0
-  puts parse($stdin)
-    .each_with_object(Hash.new(0)) { |line, h|
-      line_points(line)
-        .concat(line[0] != line[1] ? diagonal_points(line) : [])
-        .each { |p| h[p] += 1 }
-    }
-    .then { |h| h.select { |_, v| v > 1 }.count }
+  puts count_overlap_points(parse($stdin)) { |line|
+    line_points(line)
+      .concat(line[0] != line[1] ? diagonal_points(line) : [])
+  }
 end
