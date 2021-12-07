@@ -8,6 +8,7 @@ mod d02;
 mod d03;
 mod d04;
 mod d05;
+mod d06;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -26,6 +27,8 @@ fn main() {
         "d04p2" => res = Some(d04::p2(lines)),
         "d05p1" => res = Some(d05::p1(lines)),
         "d05p2" => res = Some(d05::p2(lines)),
+        "d06p1" => res = Some(d06::p1(lines)),
+        "d06p2" => res = Some(d06::p2(lines)),
         _ => {}
     }
     println!("{}", res.unwrap());
