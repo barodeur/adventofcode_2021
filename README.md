@@ -16,3 +16,5 @@ Puzzle | Ruby Solution | Rust Solution
 `d05p2` | ✅ | ✅️
 `d06p1` | ✅ | ✅️
 `d06p2` | ✅ | ✅️
+`d07p1` | ✅ | ⬜️
+`d07p2` | ⬜️ | ⬜️
