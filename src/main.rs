@@ -6,6 +6,7 @@ use std::{
 mod d01;
 mod d02;
 mod d03;
+mod d04;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -20,6 +21,8 @@ fn main() {
         "d02p2" => res = Some(d02::p2(lines)),
         "d03p1" => res = Some(d03::p1(lines)),
         "d03p2" => res = Some(d03::p2(lines)),
+        "d04p1" => res = Some(d04::p1(lines)),
+        "d04p2" => res = Some(d04::p2(lines)),
         _ => {}
     }
     println!("{}", res.unwrap());
