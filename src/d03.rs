@@ -96,7 +96,7 @@ mod tests {
 
         #[test]
         fn it_works() {
-            assert_eq!(p1(&mut test_input()), 198)
+            assert_eq!(p1(test_input()), 198)
         }
     }
 
@@ -105,7 +105,7 @@ mod tests {
 
         #[test]
         fn it_works() {
-            assert_eq!(p2(&mut test_input()), 230)
+            assert_eq!(p2(test_input()), 230)
         }
     }
 }
