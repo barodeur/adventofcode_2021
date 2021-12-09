@@ -2,5 +2,6 @@
   "github.copilot.enable": {
     "*": true,
     "rust": false,
+    "ruby": false
   }
 }
