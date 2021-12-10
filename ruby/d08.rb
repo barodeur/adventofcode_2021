@@ -14,8 +14,6 @@ def digit_by_code
   @_digit_by_code ||= code_by_digit.map.with_index { |code, idx| [code, idx] }.to_h
 end
 
-# pp digit_by_code
-
 def digits_length
   @_digit_length ||= code_by_digit.map(&:length)
 end
